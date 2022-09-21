@@ -3,10 +3,12 @@ on: push
 concurrency: test-pipeline
 jobs:
   deploy2dev:
+    if: github.ref != 'refs/heads/main'
     uses: ./.github/workflows/deploy.yaml
     with:
       DEPLOY2ENV: dev
   deploy2stage:
+    if: github.ref != 'refs/heads/main'
     needs: deploy2dev
     uses: ./.github/workflows/deploy.yaml
     with:
