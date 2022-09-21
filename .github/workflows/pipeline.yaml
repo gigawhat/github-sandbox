@@ -3,16 +3,16 @@ on: push
 concurrency: test-pipeline
 jobs:
   deploy2dev:
-    uses: ./github/workflows/deploy.yaml
+    uses: ./.github/workflows/deploy.yaml
     with:
       DEPLOY2ENV: dev
   deploy2stage:
     needs: deploy2dev
-    uses: ./github/workflows/deploy.yaml
+    uses: ./.github/workflows/deploy.yaml
     with:
       DEPLOY2ENV: stage
   deploy2prod:
     needs: deploy2stage
-    uses: ./github/workflows/deploy.yaml
+    uses: ./.github/workflows/deploy.yaml
     with:
       DEPLOY2ENV: prod
