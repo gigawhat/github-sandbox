@@ -6,7 +6,14 @@ on:
         required: true
         type: string
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.DEPLOY2ENV }}
+    steps:
+      - name: Deploy to ${{ inputs.DEPLOY2ENV }}
+        run: echo "Deploying to ${{ inputs.DEPLOY2ENV }}"
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment: ${{ inputs.DEPLOY2ENV }}
     steps:
