@@ -15,7 +15,6 @@ jobs:
       DEPLOY2ENV: stage
   deploy2prod:
     if: github.ref == 'refs/heads/main'
-    needs: deploy2stage
     uses: ./.github/workflows/deploy.yaml
     with:
       DEPLOY2ENV: prod
