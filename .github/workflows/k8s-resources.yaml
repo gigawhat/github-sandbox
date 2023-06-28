@@ -1,0 +1,20 @@
+on:
+  workflow_call:
+    inputs:
+      app_name:
+        description: "App name"
+        required: true
+        type: string
+      deploy_env:
+        description: "Environment to deploy to"
+        required: true
+        type: string
+jobs:
+  generate-k8s-resources:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: k8s-resources
+    steps:
+      - name: generate k8s resources for ${{ inputs.app_name }} in ${{ inputs.deploy_env }}
+        run: |
+          sleep 15
