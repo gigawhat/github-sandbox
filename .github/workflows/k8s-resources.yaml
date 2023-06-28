@@ -1,3 +1,4 @@
+name: generate-k8s-resources for ${{ inputs.app_name }} in ${{ inputs.deploy_env }}
 on:
   workflow_call:
     inputs:

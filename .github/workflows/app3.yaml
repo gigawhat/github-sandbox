@@ -1,0 +1,14 @@
+name: build-app3
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/app3/**"
+
+jobs:
+  generate-k8s-resources:
+    uses: ./.github/workflows/k8s-resources.yaml
+    with:
+      app_name: app3
+      deploy_env: stage
