@@ -8,6 +8,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Create dummy file
+        run: echo "Hello world !" > hello.txt
+
+      - name: Upload dummy file
+        uses: actions/upload-artifact@v4
+        with:
+          name: hello
+          path: hello.txt
+
+      - name: Echo link to artifact
+        run: echo "Artifact uploaded at ${{ steps.upload.outputs.artifact_url }}"
+
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@v2.5.0
         with:
