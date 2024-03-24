@@ -1,0 +1,28 @@
+name: PR Comment
+on: pull_request
+
+jobs:
+  pr_comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create dummy file
+        run: echo "Hello world !" > hello.txt
+
+      - name: Upload dummy file
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: hello
+          path: hello.txt
+
+      # - name: Echo link to artifact
+      #   run: echo "Artifact uploaded at ${{ steps.upload.outputs.artifact-url }}"
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v2.5.0
+        with:
+          message: |
+            Artifact uploaded at ${{ steps.upload.outputs.artifact-url }}
