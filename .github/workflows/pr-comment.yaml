@@ -21,7 +21,7 @@ jobs:
       - name: Echo link to artifact
         run: echo "Artifact uploaded at ${LINK}"
         env:
-          LINK: ${{ steps.upload.outputs.artifact_url }}
+          LINK: ${{ steps.upload.outputs.artifact-url }}
 
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@v2.5.0
