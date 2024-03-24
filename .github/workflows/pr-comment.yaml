@@ -12,6 +12,7 @@ jobs:
         run: echo "Hello world !" > hello.txt
 
       - name: Upload dummy file
+        id: upload
         uses: actions/upload-artifact@v4
         with:
           name: hello
